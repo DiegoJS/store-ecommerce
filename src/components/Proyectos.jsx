@@ -4,7 +4,7 @@ import proyecto from '../img/project.jpg'
 
 const Proyectos = (props) => (
 
-    <div className="col-md-3">
+    <div className="col-md-4">
         <div className="item-project">
             <img
                 src={proyecto}

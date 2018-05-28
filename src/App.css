@@ -26,7 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-
+.section-main{
+  padding-top: 45px;
+  padding-bottom: 45px;
+  background-color: #f4f7f6;
+}
 .title-data{
   background: #000;
   color:#fff;
