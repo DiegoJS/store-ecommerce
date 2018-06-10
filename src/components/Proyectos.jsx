@@ -1,20 +1,20 @@
 import React from 'react'
 import './Proyectos.css'
-import proyecto from '../img/project.jpg'
 import { Link } from 'react-router-dom'
+
 
 const Proyectos = (props) => (
     <div className="col-md-4">
         <div className="item-project">
             <span className="item-badge">PHP</span>
-            <Link to="/proyecto/1/demo">
-                <img alt="Proyecto" src={proyecto} className="img-fluid" />
+            <Link to={`proyecto/${props.id}/${props.name}`} >
+                <img alt="Proyecto" src={props.image} className="img-fluid" />
             </Link>
             <div className="padd-10">
-                <Link to="/proyecto/1/demo" className="project-title">
-                    Proyecto de ejemplo demo
+                <Link to={`proyecto/${props.id}/${props.name}`} className="project-title">
+                    {props.name}
                 </Link>
-                <p className="text-gray">The best developer tools, free for students</p>
+                <p className="text-gray">{props.description}</p>
             </div>
         </div>
     </div>

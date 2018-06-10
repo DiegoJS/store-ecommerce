@@ -1,12 +1,17 @@
 import React, {Component} from 'react'
+import uid from 'uid'
 import Header from './Header'
 import Footer from './Footer'
 import Proyectos from './Proyectos'
 import Sliderimage from './../img/bg_website.png'
 import './../App.css'
 
-
 class Home extends Component {
+
+    constructor(props){
+        super();
+
+    }
 
     componentDidMount() {
         //if (ExecutionEnvironment.canUseDOM) {
@@ -40,12 +45,11 @@ class Home extends Component {
                         <div className="row">
                             <div className="col-md-9">
                                 <div className="row">
-                                    <Proyectos></Proyectos>
-                                    <Proyectos></Proyectos>
-                                    <Proyectos></Proyectos>
-                                    <Proyectos></Proyectos>
-                                    <Proyectos></Proyectos>
-                                    <Proyectos></Proyectos>
+                                    {
+                                        this.props.data.map((item, i) => {
+                                            return <Proyectos key={uid()} id={item.id} name={item.name} description={item.description} image={item.image}></Proyectos>
+                                        })
+                                    }
                                 </div>
                             </div>
                             <div className="col-md-3">
