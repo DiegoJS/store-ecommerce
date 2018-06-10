@@ -4,10 +4,21 @@
     margin-top: 10px;
     margin-bottom: 10px;
     background: #fff;
+    position: relative;
+}
+.item-badge{
+    position: absolute;
+    color: #fff;
+    padding: 2px 5px;
+    text-transform: uppercase;
+    background: #ef6733;
+    top: 5px;
+    left: 5px;
+    font-size: 14px;
 }
 .project-title{
-    color: #f44336;
-    font-size: 22px;
+    color: #ef6733;
+    font-size: 18px;
     font-weight: 400;
     line-height: 10px;
 }
@@ -16,7 +27,8 @@
     text-decoration: none;
 }
 .text-gray {
-    color: #586069 !important;
+    color: #7b7b7b !important;
+    font-size: 14px;
 }
 .padd-10{
     padding: 10px;
