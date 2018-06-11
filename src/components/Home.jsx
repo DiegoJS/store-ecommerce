@@ -3,6 +3,7 @@ import uid from 'uid'
 import Header from './Header'
 import Footer from './Footer'
 import Proyectos from './Proyectos'
+import Contacto from './Contacto'
 import Sliderimage from './../img/bg_website.png'
 import './../App.css'
 
@@ -13,33 +14,38 @@ class Home extends Component {
 
     }
 
-    componentDidMount() {
-        //if (ExecutionEnvironment.canUseDOM) {
-        document.documentElement.addEventListener('scroll', this.handleScroll);
-        //}
-    }
-
-    componentWillUnmount() {
-        document.documentElement.removeEventListener('scroll', this.handleScroll);
-    }
-
-    handleScroll() {
-        //this.refs.nav.getDOMNode().style.top = document.documentElement.scrollTop + 'px';
-        console.log(document.documentElement.scrollTop);
-    }
-
     render() {
         return (
             <div className="App">
                 <header>
                     <Header></Header>
                 </header>
-                <img alt="" src={Sliderimage} className="img-fluid" />
+                <section className="sectionSlider">
+                    <div className="img-slider-home" style={{ 'background': 'url('+Sliderimage+')', 'backgroundPosition': 'center', backgroundSize:'cover'}}>
+                        <div className="title-slider">
+                            <h4 className="">Desarrollo web</h4>
+                            <a href="#contacto" className="btn-contacto-home">Contacto</a>
+                        </div>
+                    </div>
+                </section>
+                <section className="nosotros">
+                    <div className="container">
+                        <div className="col-md-8 offset-md-2">
+                            <p>&nbsp;</p>
+                            <h1 align="center">Qué hacemos</h1>
+                            <br/>
+                            <p align="center">
+                                Diseñamos y desarrollamos marcas, campañas y proyectos digitales para empresas grandes y pequeñas. Combinamos el desarrollo web de marca y el diseño de experiencia de usuario para crear productos digitales memorables que la gente adora.
+                            </p>
+                            <p>&nbsp;</p>
+                        </div>
+                    </div>
+                </section>
                 <section className="section-main">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
-                                <h2 className="h1">Proyectos</h2>
+                                <h2 className="h2">Cursos</h2>
                             </div>
                         </div>
                         <div className="row">
@@ -47,7 +53,7 @@ class Home extends Component {
                                 <div className="row">
                                     {
                                         this.props.data.map((item, i) => {
-                                            return <Proyectos key={uid()} id={item.id} name={item.name} description={item.description} image={item.image}></Proyectos>
+                                            return <Proyectos key={uid()} id={item.id} name={item.name} languaje={item.languaje} description={item.description} image={item.image}></Proyectos>
                                         })
                                     }
                                 </div>
@@ -56,6 +62,17 @@ class Home extends Component {
                                 <h2 className="h3">Topicos</h2>
                                 <h5 className="h5">Node.js</h5>
                                 <p>Node.js is a tool for executing JavaScript in a variety of environments</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-xl-8 col-lg-10 col-md-12 offset-lg-1 offset-xl-2">
+                                <p>&nbsp;</p>
+                                <Contacto></Contacto>
+                                <p>&nbsp;</p>
                             </div>
                         </div>
                     </div>

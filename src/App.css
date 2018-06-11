@@ -22,6 +22,10 @@
   font-size: large;
 }
 
+.list-socials-network li a{
+  color: #6d6d6d;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
@@ -29,7 +33,7 @@
 .section-main{
   padding-top: 45px;
   padding-bottom: 45px;
-  background-color: #f4f7f6;
+  background-color: #f9f9f9;
 }
 .title-data{
   background: #000;
