@@ -5,7 +5,7 @@ body {
 }
 .img-slider-home{
   width: 100%;
-  height: 600px;
+  height: 700px;
   position: relative;
 }
 .title-slider{
@@ -38,17 +38,71 @@ body {
   color:#fff;
   text-decoration: none;
 }
-
+.title-servicio{
+  padding-top: 10px;
+}
 .img-slider-home::after{
     content: " ";
     display: block;
-    background: rgba(23, 23, 23, 0.4);
+    background: rgba(0, 0, 0, 0.6);
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     width: 100%;
     height: 100%;
 }
-.bg-dark{
-  background: transparent;
-  background-color: transparent;
+.navbar{
+  -webkit-transition: background-color .5s ease-out;
+  -moz-transition: background-color .5s ease-out;
+  -o-transition: background-color .5s ease-out;
+  transition: background-color .5s ease-out;
+}
+.section-nosotros{
+  background: #fff;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+.section-portafolio{
+  background: #f7f7f7;
+  padding-top: 45px;
+  padding-bottom: 45px;
+}
+.section-contacto{
+  position: relative;
+}
+.section-contacto::after {
+  content: "";
+  background: url('img/sliderblog.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+.subtitle-nav{
+  background: url('img/web_apps.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 250px;
+}
+.subtitle-h1{
+  color:#fff;
+  margin-top: 110px;
+}
+.animate-code{
+  animation: Cursar infinite 1.1s linear;
+}
+
+@keyframes Cursar {
+  0% { visibility: visible; opacity: 1; }
+  50% { visibility: hidden; opacity: 0; }
 }

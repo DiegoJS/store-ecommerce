@@ -4,14 +4,17 @@ import Header from './Header'
 import Footer from './Footer'
 import Proyectos from './Proyectos'
 import Contacto from './Contacto'
+import Portafolio from './Portafolio'
 import Sliderimage from './../img/bg_website.png'
+import developicona from './../img/development.png'
+import developiconb from './../img/dashboard.png'
+import developiconc from './../img/network.png'
 import './../App.css'
 
 class Home extends Component {
 
     constructor(props){
         super();
-
     }
 
     render() {
@@ -23,21 +26,47 @@ class Home extends Component {
                 <section className="sectionSlider">
                     <div className="img-slider-home" style={{ 'background': 'url('+Sliderimage+')', 'backgroundPosition': 'center', backgroundSize:'cover'}}>
                         <div className="title-slider">
-                            <h4 className="">Desarrollo web</h4>
-                            <a href="#contacto" className="btn-contacto-home">Contacto</a>
+                            <h4>Desarrollo web profesional <span className="animate-code">|</span></h4>
+                            <h5 className="subitle-slider">Realiza tu proyecto con buenas ideas</h5>
+                            <a href="#contacto" className="btn-contacto-home">Portafolio</a>
                         </div>
                     </div>
                 </section>
-                <section className="nosotros">
+                <section className="section-nosotros">
                     <div className="container">
-                        <div className="col-md-8 offset-md-2">
-                            <p>&nbsp;</p>
-                            <h1 align="center">Qué hacemos</h1>
-                            <br/>
-                            <p align="center">
-                                Diseñamos y desarrollamos marcas, campañas y proyectos digitales para empresas grandes y pequeñas. Combinamos el desarrollo web de marca y el diseño de experiencia de usuario para crear productos digitales memorables que la gente adora.
-                            </p>
-                            <p>&nbsp;</p>
+                        <div className="row">
+                            <div className="col-md-8 offset-md-2">
+                                <h2 align="center">¿Quienes somos y que hacemos?</h2>
+                                <br />
+                                <p align="center">
+                                    Somos un equipo de trabajo que se dedica al desarrollo e implementación de soluciones informáticas, tenemos el gusto de haber trabajado empresas grandes y pequeñas, lo que nos ha dado una mejor visión de las principales necesidades a su vez esto nos ha brindado la oportunidad de aprender nuevas formas de afrontarlos con éxito.
+                                </p>
+                                {/* <p align="center">Ante la creciente demanda de soluciones, es necesario que los profesionales en este campo tengan a la mano mejores herramientas y propuestas que los distingan del resto. Es por ello que decidimos formar un blog en donde iremos compartiendo información y casos prácticos para un mejor entendimiento de cada una de las tecnologías.</p> */}
+                                <p>&nbsp;</p>
+                            </div>
+                        </div>
+                        <div className="row">
+                            <div className="col-md-4" align="center">
+                                <img src={developicona} alt="Icono" className="desarrollo_web img-fluid"/>
+                                <h4 className="title-servicio">Software a medida</h4>
+                            </div>
+                            <div className="col-md-4" align="center">
+                                <img src={developiconc} alt="Icono" className="desarrollo_web img-fluid" />
+                                <h4 className="title-servicio">Desarrollo web y móvil</h4>
+                            </div>
+                            <div className="col-md-4" align="center">
+                                <img src={developiconb} alt="Icono" className="desarrollo_web img-fluid" />
+                                <h4 className="title-servicio">SEO y posicionamiento</h4>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section className="section-portafolio">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-12">
+                                <Portafolio></Portafolio>
+                            </div>
                         </div>
                     </div>
                 </section>
@@ -45,7 +74,7 @@ class Home extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
-                                <h2 className="h2">Cursos</h2>
+                                <h2 className="h2" align="center">Nuestras Publicaciones</h2>
                             </div>
                         </div>
                         <div className="row">
@@ -66,7 +95,7 @@ class Home extends Component {
                         </div>
                     </div>
                 </section>
-                <section>
+                <section className="section-contacto">
                     <div className="container">
                         <div className="row">
                             <div className="col-xl-8 col-lg-10 col-md-12 offset-lg-1 offset-xl-2">

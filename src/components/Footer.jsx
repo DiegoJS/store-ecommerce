@@ -7,7 +7,7 @@ const Footer = (props) => (
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <p align="center" className="subtitle-footer">Todos los derechos reservados © 2018</p>
+                    <p align="center" className="subtitle-footer">IdeasWebStore - Todos los derechos reservados © 2018</p>
                 </div>
             </div>
         </div>

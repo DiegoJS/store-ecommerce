@@ -1,15 +1,14 @@
 import React, {Component} from 'react'
 
-
 class Contacto extends Component{
 
     render(){
         return (
             <div>
                 <h1 align="center">Contacto</h1>
-                <p align="center">¿Tienes un nuevo proyecto? Construyamos algo grandioso juntos.</p>
+                <p align="center">¿Tienes un nuevo proyecto? ¿Necesitas asesoría o quieres sugerir un tema?</p>
                 <div className="row">
-                    <div className="col-md-6">
+                    <div className="col-md-8">
                         <div className="form-group">
                             <input type="text" name="nombre" className="form-control"  placeholder="Nombre"/>
                         </div>
@@ -26,15 +25,15 @@ class Contacto extends Component{
                             <button type="submit" className="btn btn-outline-success">ENVIAR</button>
                         </div>
                     </div>
-                    <div className="col-md-6">
+                    <div className="col-md-4">
                         <ul className="list-unstyled">
                             <li>
-                                <h4>Deja un mensaje</h4>
-                                <p>info@leavecode.com</p>
-                                <p>(+51) 5554441</p>
+                                <h5>Envíanos un mensaje</h5>
+                                <p>info@mundodelaweb.com</p>
+                                <p>(+51) 999888777</p>
                             </li>
                             <li>
-                                <h4>Síguenos</h4>
+                                <h5>Síguenos</h5>
                                 <ul className="list-inline list-socials-network">
                                     <li className="list-inline-item">
                                     <a href="https://facebook.com" rel="noopener noreferrer" target="_blank">
