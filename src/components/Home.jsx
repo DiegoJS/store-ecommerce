@@ -5,6 +5,7 @@ import Footer from './Footer'
 import Proyectos from './Proyectos'
 import Contacto from './Contacto'
 import Portafolio from './Portafolio'
+import LazyLoad from 'react-lazyload'
 import Sliderimage from './../img/bg_website.png'
 import developicona from './../img/development.png'
 import developiconb from './../img/dashboard.png'
@@ -15,6 +16,43 @@ class Home extends Component {
 
     constructor(props){
         super();
+
+        this.state = {
+            contactoNombre: '',
+            contactoEmail: '',
+            contactoAsunto: '',
+            contactoMensaje: '',
+        }
+
+        this.handleContacto = this.handleContacto.bind(this);
+        this.changeContactoNombre = this.changeContactoNombre.bind(this);
+        this.changeContactoEmail = this.changeContactoEmail.bind(this);
+        this.changeContactoAsunto = this.changeContactoAsunto.bind(this);
+        this.changeContactoMensaje = this.changeContactoMensaje.bind(this);
+
+    }
+
+    handleContacto(event){
+        event.preventDefault();
+        this.setState({ 
+            contactoNombre: '',
+            contactoEmail: '',
+            contactoAsunto: '',
+            contactoMensaje: '',
+        });
+        console.log('enviado');
+    }
+    changeContactoNombre(event){
+        this.setState({ contactoNombre: event.target.value });
+    }
+    changeContactoEmail(event){
+        this.setState({ contactoEmail: event.target.value });
+    }
+    changeContactoAsunto(event){
+        this.setState({ contactoAsunto: event.target.value });
+    }
+    changeContactoMensaje(event){
+        this.setState({ contactoMensaje: event.target.value });
     }
 
     render() {
@@ -47,15 +85,21 @@ class Home extends Component {
                         </div>
                         <div className="row">
                             <div className="col-md-4" align="center">
-                                <img src={developicona} alt="Icono" className="desarrollo_web img-fluid"/>
+                                <LazyLoad once height={200}>
+                                    <img src={developicona} alt="Icono" className="desarrollo_web img-fluid"/>
+                                </LazyLoad>
                                 <h4 className="title-servicio">Software a medida</h4>
                             </div>
                             <div className="col-md-4" align="center">
+                                <LazyLoad once height={200}>
                                 <img src={developiconc} alt="Icono" className="desarrollo_web img-fluid" />
+                                </LazyLoad>
                                 <h4 className="title-servicio">Desarrollo web y móvil</h4>
                             </div>
                             <div className="col-md-4" align="center">
+                                <LazyLoad once height={200}>
                                 <img src={developiconb} alt="Icono" className="desarrollo_web img-fluid" />
+                                </LazyLoad>
                                 <h4 className="title-servicio">SEO y posicionamiento</h4>
                             </div>
                         </div>
@@ -82,7 +126,7 @@ class Home extends Component {
                                 <div className="row">
                                     {
                                         this.props.data.map((item, i) => {
-                                            return <Proyectos key={uid()} id={item.id} name={item.name} languaje={item.languaje} description={item.description} image={item.image}></Proyectos>
+                                            return <LazyLoad once height={200} key={uid()} ><Proyectos key={uid()} id={item.id} name={item.name} languaje={item.languaje} description={item.description} image={item.image}></Proyectos></LazyLoad>
                                         })
                                     }
                                 </div>
@@ -100,7 +144,18 @@ class Home extends Component {
                         <div className="row">
                             <div className="col-xl-8 col-lg-10 col-md-12 offset-lg-1 offset-xl-2">
                                 <p>&nbsp;</p>
-                                <Contacto></Contacto>
+                                <Contacto 
+                                    handleContacto={this.handleContacto} 
+                                    changeContactoNombre={this.changeContactoNombre} 
+                                    changeContactoEmail={this.changeContactoEmail} 
+                                    changeContactoAsunto={this.changeContactoAsunto} 
+                                    changeContactoMensaje={this.changeContactoMensaje} 
+                                    contactoNombre={this.state.contactoNombre} 
+                                    contactoEmail={this.state.contactoEmail} 
+                                    contactoAsunto={this.state.contactoAsunto} 
+                                    contactoMensaje={this.state.contactoMensaje} 
+                                    >
+                                </Contacto>
                                 <p>&nbsp;</p>
                             </div>
                         </div>

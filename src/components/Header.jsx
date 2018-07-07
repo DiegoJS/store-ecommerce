@@ -23,14 +23,14 @@ class Header extends Component {
     handleScroll() {
         //this.refs.nav.getDOMNode().style.top = document.documentElement.scrollTop + 'px';
         let scrolltop = document.documentElement.scrollTop;
-
         let scrollactive = this.state.scrollactive;
 
         if (scrolltop > 50 && !scrollactive) {
             this.setState({
                 scrollactive: true,
             });
-        } else if (scrolltop <= 50 && scrollactive){
+        }
+        else if (scrolltop <= 50 && scrollactive){
             this.setState({
                 scrollactive: false,
             });

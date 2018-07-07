@@ -1,7 +1,9 @@
 import React, {Component} from 'react'
 
 class Contacto extends Component{
-
+    constructor(props){
+        super();
+    }
     render(){
         return (
             <div>
@@ -9,21 +11,23 @@ class Contacto extends Component{
                 <p align="center">¿Tienes un nuevo proyecto? ¿Necesitas asesoría o quieres sugerir un tema?</p>
                 <div className="row">
                     <div className="col-md-8">
+                        <form onSubmit={this.props.handleContacto}>
                         <div className="form-group">
-                            <input type="text" name="nombre" className="form-control"  placeholder="Nombre"/>
+                            <input type="text" name="nombre" value={this.props.contactoNombre} onChange={this.props.changeContactoNombre} className="form-control"  placeholder="Nombre" required/>
                         </div>
                         <div className="form-group">
-                            <input type="text" name="email" className="form-control" placeholder="Email" />
+                            <input type="text" name="email" value={this.props.contactoEmail} onChange={this.props.changeContactoEmail} className="form-control" placeholder="Email" required/>
                         </div>
                         <div className="form-group">
-                            <input type="text" name="asunto" className="form-control" placeholder="Asunto" />
+                            <input type="text" name="asunto" value={this.props.contactoAsunto} onChange={this.props.changeContactoAsunto} className="form-control" placeholder="Asunto" required/>
                         </div>
                         <div className="form-group">
-                            <textarea name="mensaje" rows="5" className="form-control" placeholder="Mensaje"></textarea>
+                            <textarea name="mensaje" rows="5" value={this.props.contactoMensaje} onChange={this.props.changeContactoMensaje} className="form-control" placeholder="Mensaje" required></textarea>
                         </div>
                         <div className="form-group">
                             <button type="submit" className="btn btn-outline-success">ENVIAR</button>
                         </div>
+                        </form>
                     </div>
                     <div className="col-md-4">
                         <ul className="list-unstyled">

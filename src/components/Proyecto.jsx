@@ -11,9 +11,10 @@ class Proyecto extends Component {
     constructor(props){
         super();
 
-        //console.log(props);
-        //console.log(props.match.params.id);
-        //console.log(props.match.params.name);
+    }
+
+    componentDidMount() {
+        window.scrollTo(0, 0)
     }
 
     render() {
