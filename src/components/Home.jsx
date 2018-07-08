@@ -1,4 +1,4 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import uid from 'uid'
 import Header from './Header'
 import Footer from './Footer'
@@ -14,7 +14,7 @@ import './../App.css'
 
 class Home extends Component {
 
-    constructor(props){
+    constructor(props) {
         super();
 
         this.state = {
@@ -32,9 +32,9 @@ class Home extends Component {
 
     }
 
-    handleContacto(event){
+    handleContacto(event) {
         event.preventDefault();
-        this.setState({ 
+        this.setState({
             contactoNombre: '',
             contactoEmail: '',
             contactoAsunto: '',
@@ -42,16 +42,16 @@ class Home extends Component {
         });
         console.log('enviado');
     }
-    changeContactoNombre(event){
+    changeContactoNombre(event) {
         this.setState({ contactoNombre: event.target.value });
     }
-    changeContactoEmail(event){
+    changeContactoEmail(event) {
         this.setState({ contactoEmail: event.target.value });
     }
-    changeContactoAsunto(event){
+    changeContactoAsunto(event) {
         this.setState({ contactoAsunto: event.target.value });
     }
-    changeContactoMensaje(event){
+    changeContactoMensaje(event) {
         this.setState({ contactoMensaje: event.target.value });
     }
 
@@ -62,7 +62,7 @@ class Home extends Component {
                     <Header></Header>
                 </header>
                 <section className="sectionSlider">
-                    <div className="img-slider-home" style={{ 'background': 'url('+Sliderimage+')', 'backgroundPosition': 'center', backgroundSize:'cover'}}>
+                    <div className="img-slider-home" style={{ 'background': 'url(' + Sliderimage + ')', 'backgroundPosition': 'center', backgroundSize: 'cover' }}>
                         <div className="title-slider">
                             <h4>Desarrollo web profesional <span className="animate-code">|</span></h4>
                             <h5 className="subitle-slider">Realiza tu proyecto con buenas ideas</h5>
@@ -86,19 +86,19 @@ class Home extends Component {
                         <div className="row">
                             <div className="col-md-4" align="center">
                                 <LazyLoad once height={200}>
-                                    <img src={developicona} alt="Icono" className="desarrollo_web img-fluid"/>
+                                    <img src={developicona} alt="Icono" className="desarrollo_web img-fluid" />
                                 </LazyLoad>
                                 <h4 className="title-servicio">Software a medida</h4>
                             </div>
                             <div className="col-md-4" align="center">
                                 <LazyLoad once height={200}>
-                                <img src={developiconc} alt="Icono" className="desarrollo_web img-fluid" />
+                                    <img src={developiconc} alt="Icono" className="desarrollo_web img-fluid" />
                                 </LazyLoad>
                                 <h4 className="title-servicio">Desarrollo web y móvil</h4>
                             </div>
                             <div className="col-md-4" align="center">
                                 <LazyLoad once height={200}>
-                                <img src={developiconb} alt="Icono" className="desarrollo_web img-fluid" />
+                                    <img src={developiconb} alt="Icono" className="desarrollo_web img-fluid" />
                                 </LazyLoad>
                                 <h4 className="title-servicio">SEO y posicionamiento</h4>
                             </div>
@@ -144,17 +144,17 @@ class Home extends Component {
                         <div className="row">
                             <div className="col-xl-8 col-lg-10 col-md-12 offset-lg-1 offset-xl-2">
                                 <p>&nbsp;</p>
-                                <Contacto 
-                                    handleContacto={this.handleContacto} 
-                                    changeContactoNombre={this.changeContactoNombre} 
-                                    changeContactoEmail={this.changeContactoEmail} 
-                                    changeContactoAsunto={this.changeContactoAsunto} 
-                                    changeContactoMensaje={this.changeContactoMensaje} 
-                                    contactoNombre={this.state.contactoNombre} 
-                                    contactoEmail={this.state.contactoEmail} 
-                                    contactoAsunto={this.state.contactoAsunto} 
-                                    contactoMensaje={this.state.contactoMensaje} 
-                                    >
+                                <Contacto
+                                    handleContacto={this.handleContacto}
+                                    changeContactoNombre={this.changeContactoNombre}
+                                    changeContactoEmail={this.changeContactoEmail}
+                                    changeContactoAsunto={this.changeContactoAsunto}
+                                    changeContactoMensaje={this.changeContactoMensaje}
+                                    contactoNombre={this.state.contactoNombre}
+                                    contactoEmail={this.state.contactoEmail}
+                                    contactoAsunto={this.state.contactoAsunto}
+                                    contactoMensaje={this.state.contactoMensaje}
+                                >
                                 </Contacto>
                                 <p>&nbsp;</p>
                             </div>

@@ -1,10 +1,10 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import './Header.css'
 
 class Header extends Component {
 
-    constructor(...props){
+    constructor(...props) {
         super()
         this.state = {
             scrollactive: false
@@ -16,7 +16,7 @@ class Header extends Component {
         window.addEventListener('scroll', this.handleScroll);
     }
 
-    componentWillUnmount(){
+    componentWillUnmount() {
         window.removeEventListener('scroll', this.handleScroll);
     }
 
@@ -30,7 +30,7 @@ class Header extends Component {
                 scrollactive: true,
             });
         }
-        else if (scrolltop <= 50 && scrollactive){
+        else if (scrolltop <= 50 && scrollactive) {
             this.setState({
                 scrollactive: false,
             });
@@ -45,14 +45,14 @@ class Header extends Component {
         if (this.state.scrollactive) {
             menu_activo = 'navbar navbar-expand-lg navbar-dark fixed-top bg-dark';
         }
-        else{
+        else {
             menu_activo = 'navbar navbar-expand-lg navbar-dark fixed-top';
         }
 
         return (
             <div>
                 <nav className={menu_activo}>
-                
+
                     <div className="container">
                         <Link className="navbar-brand" to="/">IdeasWebStore</Link>
                         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
