@@ -30,7 +30,7 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
-.section-main{
+.section-main, .section-skill{
   padding-top: 45px;
   padding-bottom: 45px;
   background: #fff;
