@@ -2,17 +2,11 @@ import React, { Component } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 import { Link } from 'react-router-dom'
-/*
-import uid from 'uid'
-import Proyectos from './Proyectos'
-import Contacto from './Contacto'
-import LazyLoad from 'react-lazyload'
-import Sliderimage from './../img/bg_website.png'
-import developicona from './../img/development.png'
-import developiconb from './../img/dashboard.png'
-import developiconc from './../img/network.png' */
+import axios from 'axios';
 import './../App.css'
 import imgSlider from './../img/slider1.jpg'
+import uid from 'uid'
+import Producto from './Producto'
 
 class Home extends Component {
 
@@ -24,6 +18,8 @@ class Home extends Component {
             contactoEmail: '',
             contactoAsunto: '',
             contactoMensaje: '',
+            products: [],
+            categories: [],
         }
 
         this.handleContacto = this.handleContacto.bind(this);
@@ -31,6 +27,7 @@ class Home extends Component {
         this.changeContactoEmail = this.changeContactoEmail.bind(this);
         this.changeContactoAsunto = this.changeContactoAsunto.bind(this);
         this.changeContactoMensaje = this.changeContactoMensaje.bind(this);
+        this.addCart = this.addCart.bind(this);
 
     }
 
@@ -56,8 +53,22 @@ class Home extends Component {
     changeContactoMensaje(event) {
         this.setState({ contactoMensaje: event.target.value });
     }
-
+    componentDidMount() {
+        axios.get('http://127.0.0.1/elementi/frontend/ajax/getProductos')
+            .then(res => {
+                this.setState({ products: res.data.productos });
+            })
+        axios.get('http://127.0.0.1/elementi/frontend/ajax/getCategorias')
+            .then(res => {
+                this.setState({ categories: res.data.categorias });
+            })
+        
+    }
+    addCart(product_id){
+        console.log(product_id);
+    }
     render() {
+
         return (
             <div className="App">
                 <header>
@@ -69,11 +80,13 @@ class Home extends Component {
                             <div className="col-md-3">
                                 <ul className="list-group">
                                     <span className="list-group-item">Categorias</span>
-                                    <Link to="#" className="list-group-item">Cras justo odio</Link>
-                                    <Link to="#" className="list-group-item">Dapibus ac facilisis in</Link>
-                                    <Link to="#" className="list-group-item">Morbi leo risus</Link>
-                                    <Link to="#" className="list-group-item">Porta ac consectetur ac</Link>
-                                    <Link to="#" className="list-group-item">Vestibulum at eros</Link>
+                                    {
+                                        this.state.categories.map((item) => {
+                                            return (
+                                                <Link to="#" key={uid()} className="list-group-item">{item.nombre}</Link>
+                                            )
+                                        })
+                                    }
                                 </ul>
                                 <br />
                                 <div className="card">
@@ -96,27 +109,19 @@ class Home extends Component {
                                     <div className="col-md-4">
                                         <div className="card">
                                             <div className="card-body">
-                                                <div className="media">
-                                                    <img className="mr-3" width="62" src={ imgSlider } alt="Generic placeholder producto" />
-                                                    <div className="media-body">
-                                                        <h6 className="mt-0">Media heading</h6>
-                                                        <p>Cras sit amet nibh libero.</p>
-                                                    </div>
-                                                </div>
-                                                <div className="media">
-                                                    <img className="mr-3" width="62" src={imgSlider} alt="Generic placeholder producto" />
-                                                    <div className="media-body">
-                                                        <h6 className="mt-0">Media heading</h6>
-                                                        <p>Cras sit amet nibh libero.</p>
-                                                    </div>
-                                                </div>
-                                                <div className="media">
-                                                    <img className="mr-3" width="62" src={imgSlider} alt="Generic placeholder producto" />
-                                                    <div className="media-body">
-                                                        <h6 className="mt-0">Media heading</h6>
-                                                        <p>Cras sit amet nibh libero.</p>
-                                                    </div>
-                                                </div>
+                                                {
+                                                    this.state.products.map(function (item, i) {
+                                                        return(
+                                                            <div className="media" key={uid()}>
+                                                                <img className="mr-3" width="62" src={imgSlider} src={'http://elfiko.com/elementi_admin/uploads/productos/' + item.imagen} alt={item.nombre}/>
+                                                                <div className="media-body">
+                                                                    <h6 className="mt-0">{item.nombre}</h6>
+                                                                    <p>Cras sit amet nibh libero.</p>
+                                                                </div>
+                                                            </div>
+                                                        )
+                                                    })
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -132,32 +137,7 @@ class Home extends Component {
                                             </nav>
                                             <div className="tab-content" id="nav-tabContent">
                                                 <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                                    <div className="row">
-                                                        <div className="col-md-4">
-                                                            <div className="card">
-                                                                <img className="card-img-top" src={imgSlider} alt="Card producto cap" />
-                                                                <div className="card-body">
-                                                                    Producto a
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-4">
-                                                            <div className="card">
-                                                                <img className="card-img-top" src={imgSlider} alt="Card producto cap" />
-                                                                <div className="card-body">
-                                                                    Producto a
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="col-md-4">
-                                                            <div className="card">
-                                                                <img className="card-img-top" src={imgSlider} alt="Card producto cap" />
-                                                                <div className="card-body">
-                                                                    Producto a
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <Producto addcart={this.addCart} productos={this.state.products}></Producto>
                                                 </div>
                                                 <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
                                             </div>
