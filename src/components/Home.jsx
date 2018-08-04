@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import Header from './Header'
 import Footer from './Footer'
-import { Link } from 'react-router-dom'
 import axios from 'axios';
 import './../App.css'
 import imgSlider from './../img/slider1.jpg'
 import uid from 'uid'
 import Producto from './Producto'
+import { addToCart } from './../actionCreators'
+import Categorias from './Categorias';
 
 class Home extends Component {
 
@@ -20,6 +21,7 @@ class Home extends Component {
             contactoMensaje: '',
             products: [],
             categories: [],
+            cartItems: 0,
         }
 
         this.handleContacto = this.handleContacto.bind(this);
@@ -39,7 +41,7 @@ class Home extends Component {
             contactoAsunto: '',
             contactoMensaje: '',
         });
-        console.log('enviado');
+        //console.log('enviado');
     }
     changeContactoNombre(event) {
         this.setState({ contactoNombre: event.target.value });
@@ -64,9 +66,14 @@ class Home extends Component {
             })
         
     }
+
     addCart(product_id){
-        console.log(product_id);
+
+        let product_add = this.state.products.filter(item => item.id === product_id);
+        addToCart(product_add);
+
     }
+
     render() {
 
         return (
@@ -78,16 +85,7 @@ class Home extends Component {
                     <div className="container">
                         <div className="row">
                             <div className="col-md-3">
-                                <ul className="list-group">
-                                    <span className="list-group-item">Categorias</span>
-                                    {
-                                        this.state.categories.map((item) => {
-                                            return (
-                                                <Link to="#" key={uid()} className="list-group-item">{item.nombre}</Link>
-                                            )
-                                        })
-                                    }
-                                </ul>
+                                <Categorias categories={this.state.categories}></Categorias>
                                 <br />
                                 <div className="card">
                                     <div className="card-body">

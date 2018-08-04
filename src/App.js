@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom'
 import Route from 'react-router-dom/Route'
 import Home from './components/Home'
+import Carrito from './components/Carrito'
 import Proyecto from './components/Proyecto'
 import fontawesome from '@fortawesome/fontawesome'
 import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebookF'
@@ -32,6 +33,7 @@ class App extends Component {
         <div>
           <Route path="/" exact strict render={(props) => (<Home data={this.state.items} />)} />
           <Route path="/proyecto/:id/:name" component={Proyecto} />
+          <Route path="/carrito" component={Carrito} />
           <Route path="/about" exact strict render={
             () => {
               return (<h1>About</h1>)
