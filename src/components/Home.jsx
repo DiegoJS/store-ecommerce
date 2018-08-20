@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
+import axios from 'axios';
 import Header from './Header'
 import Footer from './Footer'
-import axios from 'axios';
-import './../App.css'
-import imgSlider from './../img/slider1.jpg'
-import uid from 'uid'
 import Producto from './Producto'
+import Navbar from './Navbar'
 import { addToCart } from './../actionCreators'
 import Categorias from './Categorias';
+import uid from 'uid'
+import './../App.css'
+import imgSlider from './../img/slider1.jpg'
+import store from '../store'
 
 class Home extends Component {
 
@@ -56,6 +58,13 @@ class Home extends Component {
         this.setState({ contactoMensaje: event.target.value });
     }
     componentDidMount() {
+
+        store.subscribe(() => {
+            this.setState({
+                cartItems: store.getState().cart.length
+            })
+        })
+
         axios.get('http://127.0.0.1/elementi/frontend/ajax/getProductos')
             .then(res => {
                 this.setState({ products: res.data.productos });
@@ -79,8 +88,11 @@ class Home extends Component {
         return (
             <div className="App">
                 <header>
-                    <Header></Header>
+                    <Header totalitems={this.state.cartItems}></Header>
                 </header>
+                <div className="container">
+                    <Navbar></Navbar>
+                </div> 
                 <section className="section-home">
                     <div className="container">
                         <div className="row">

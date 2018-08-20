@@ -11,20 +11,28 @@ class Carrito extends Component {
         super();
         this.eliminarProducto = this.eliminarProducto.bind(this);
         this.state = {
-	      	items: store.getState().cart
+			items: store.getState().cart,
 	    }
     }
 
     eliminarProducto(id){
-    	removeFromCart();
-    	//console.log(id);
-    }
+		removeFromCart(id);
+	}
+
+	componentDidMount() {
+
+		store.subscribe(() => {
+			this.setState({
+				items: store.getState().cart
+			})
+		})
+	}
 
 	render(){
 		//console.log(this.state.items);
 		return(
 			<div>
-				<Header></Header>
+				<Header totalitems={this.state.items.length}></Header>
 				<div className="container">
 					<div className="row">
 						<div className="col-md-12">
