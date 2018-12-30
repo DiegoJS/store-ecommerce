@@ -3,7 +3,6 @@ import { BrowserRouter as Router } from 'react-router-dom'
 import Route from 'react-router-dom/Route'
 import Home from './components/Home'
 import Carrito from './components/Carrito'
-import Proyecto from './components/Proyecto'
 import fontawesome from '@fortawesome/fontawesome'
 import faFacebook from '@fortawesome/fontawesome-free-brands/faFacebookF'
 import faGooglePlus from '@fortawesome/fontawesome-free-brands/faGooglePlusG'
@@ -32,7 +31,6 @@ class App extends Component {
       <Router>
         <div>
           <Route path="/" exact strict render={(props) => (<Home data={this.state.items} />)} />
-          <Route path="/proyecto/:id/:name" component={Proyecto} />
           <Route path="/carrito" component={Carrito} />
           <Route path="/about" exact strict render={
             () => {
