@@ -2,18 +2,23 @@ import { createStore } from 'redux'
 
 const reducer = (state, action) => {
 
-    if(action.type === "ADD_TO_CART"){
-        return {
-            ...state,
-            cart: state.cart.concat(action.product)
-        }
+    switch (action.type) {
+        case "ADD_TO_CART":
+            return {
+                ...state,
+                cart: state.cart.concat(action.product)
+            }
+            break;
+        case "REMOVE_FROM_CART":
+            return {
+                ...state,
+                cart: state.cart.filter(item => item.id !== action.product)
+            }
+            break;
+        default:
+            break;
     }
-    else if(action.type === "REMOVE_FROM_CART") {
-        return {
-            ...state,
-            cart: state.cart.filter(item => item.id !== action.product)
-        }
-    }
+
     return state;
 }
 

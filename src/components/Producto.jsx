@@ -10,7 +10,7 @@ const Producto = (props) => (
                 return (
                     <div className="col-md-4" key={uid()}>
                         <div className="card">
-                            <img className="card-img-top" height="180" src={'http://elfiko.com/elementi_admin/uploads/productos/' + item.imagen} alt={item.nombre} />
+                            <img className="card-img-top" height="180" src={'http://127.0.0.1/store/uploads/productos/' + item.imagen} alt={item.nombre} />
                             <div className="card-body">
                                 <p>{product_name}</p>
                                 <button className="btn btn-warning" onClick={(e) => props.addcart(item.id, e)}><i className="fas fa-shopping-cart"></i> Agregar</button>

@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
 import uid from 'uid'
-import { Link } from 'react-router-dom'
 import store from './../store'
 import {removeFromCart} from './../actionCreators'
 import Header from './Header'
+import {connect} from 'react-redux'
 
 class Carrito extends Component {
 	
@@ -65,4 +65,4 @@ class Carrito extends Component {
 	
 }
 
-export default Carrito
+export default connect()(Carrito)

@@ -3,33 +3,34 @@ import { Link } from 'react-router-dom'
 import './Footer.css'
 
 const Footer = (props) => (
-    <footer className="footer-section">
+    <footer className="footer-section pt-3">
         <div className="container">
             <div className="row">
-                <div className="col-sm-3 col-xs-12">
-                    <h4>products
-                        <button type="button" className="toggle collapsed" data-toggle="collapse" data-target="#fproduct"></button>
-                    </h4>
-                    <ul id="fproduct" className="site-footer__links footer-collapse collapse show list-unstyled">
-                        <li><Link to="#">Bestsell Product</Link></li>
-                        <li><Link to="#">Featured Product</Link></li>
-                        <li><Link to="#">New Product </Link></li>
+                <div className="col-sm-3 offset-sm-6 col-xs-12">
+                    <h5 className="mb-4">Menu</h5>
+                    <ul className="site-footer__links footer-collapse collapse show list-unstyled">
+                        <li><Link to="/productos">Productos</Link></li>
+                        <li><Link to="/ofertas">Ofertas</Link></li>
+                        <li><Link to="/novedades">Novedades</Link></li>
+                        <li><Link to="/contacto">Contacto</Link></li>
                     </ul>
                 </div>
                 <div className="col-sm-3 col-xs-12 footcont">
-                    <h4>Contact us <button type="button" className="toggle collapsed" data-toggle="collapse" data-target="#fcontact"></button></h4>
+                    <h5 className="mb-4">Contacto </h5>
                     <div id="fcontact" className="footer-collapse collapse show">
                         <div className="address">
-                            <p>
-                                <i className="fa fa-map-marker"></i> demo store United States.
-                            </p>
-                            <p>
-                                <i className="fa fa-phone"></i> 0123-456-789
-                            </p>
+                            <ul className="list-unstyled">
+                                <li>
+                                    <i className="fa fa-map-marker"></i> Tienda Online.
+                                </li>
+                                <li>
+                                    <i className="fa fa-phone"></i> +51 99995555
+                                </li>
+                                <li>
+                                    <i className="fa fa-envelope"></i> diego.g20x@gmail.com
+                                </li>
+                            </ul>
                         </div>
-                        <Link to="mailto:demo@demo.com">
-                            <i className="fa fa-envelope"></i> demo@demo.com
-                        </Link>
                     </div>
                 </div>
             </div>
@@ -37,12 +38,11 @@ const Footer = (props) => (
         <div className="container">
             <div className="row">
                 <div className="col-md-12">
-                    <p align="center" className="subtitle-footer">IdeasWebStore - Todos los derechos reservados © 2018</p>
+                    <p align="center" className="subtitle-footer mt-3">IdeasWebTec - Todos los derechos reservados © 2019</p>
                 </div>
             </div>
         </div>
     </footer>
-
 )
 
 export default Footer

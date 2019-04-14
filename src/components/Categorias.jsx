@@ -8,7 +8,7 @@ const Categorias = (props) => (
         {
             props.categories.map((item) => {
                 return (
-                    <Link to="#" key={uid()} className="list-group-item">{item.nombre}</Link>
+                    <Link to="/categoria" key={uid()} className="list-group-item">{item.nombre}</Link>
                 )
             })
         }

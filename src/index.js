@@ -9,8 +9,13 @@ import '@fortawesome/fontawesome/index'
 import '@fortawesome/fontawesome-free-brands/index'
 import '@fortawesome/fontawesome-free-regular/index'
 import '@fortawesome/fontawesome-free-solid/index'
+import store from './store.js'
+import { Provider } from 'react-redux'
+
 ReactDOM.render(
-    <App />,
+    <Provider store={store}>
+        <App />
+    </Provider>,
     document.getElementById('root')
 );
 registerServiceWorker();

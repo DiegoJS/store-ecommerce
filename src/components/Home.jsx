@@ -8,12 +8,13 @@ import { addToCart } from './../actionCreators'
 import Categorias from './Categorias';
 import uid from 'uid'
 import './../App.css'
-import imgSlider from './../img/slider1.jpg'
+import imgSlider from './../img/slider-1.PNG'
 import store from '../store'
+import {connect} from 'react-redux'
 
 class Home extends Component {
 
-    constructor(props) {
+    constructor() {
         super();
 
         this.state = {
@@ -43,7 +44,6 @@ class Home extends Component {
             contactoAsunto: '',
             contactoMensaje: '',
         });
-        //console.log('enviado');
     }
     changeContactoNombre(event) {
         this.setState({ contactoNombre: event.target.value });
@@ -65,26 +65,24 @@ class Home extends Component {
             })
         })
 
-        axios.get('http://127.0.0.1/elementi/frontend/ajax/getProductos')
-            .then(res => {
-                this.setState({ products: res.data.productos });
-            })
-        axios.get('http://127.0.0.1/elementi/frontend/ajax/getCategorias')
-            .then(res => {
-                this.setState({ categories: res.data.categorias });
-            })
+        axios.get('http://127.0.0.1/store/api/getProductos')
+        .then(res => {
+            this.setState({ products: res.data.productos });
+        })
+
+        axios.get('http://127.0.0.1/store/api/getCategorias')
+        .then(res => {
+            this.setState({ categories: res.data.categorias });
+        })
         
     }
 
     addCart(product_id){
-
         let product_add = this.state.products.filter(item => item.id === product_id);
         addToCart(product_add);
-
     }
 
     render() {
-
         return (
             <div className="App">
                 <header>
@@ -106,7 +104,7 @@ class Home extends Component {
                                             <input type="email" placeholder="Email" className="form-control" />
                                         </div>
                                         <div className="form-group">
-                                            <button className="btn btn-primary">Suscribirme</button>
+                                            <button className="btn btn-dark btn-block">Suscribirme</button>
                                         </div>
                                     </div>
                                 </div>
@@ -123,7 +121,7 @@ class Home extends Component {
                                                     this.state.products.map(function (item, i) {
                                                         return(
                                                             <div className="media" key={uid()}>
-                                                                <img className="mr-3" width="62" src={imgSlider} src={'http://elfiko.com/elementi_admin/uploads/productos/' + item.imagen} alt={item.nombre}/>
+                                                                <img className="mr-3" width="62" src={imgSlider} src={'http://127.0.0.1/store/uploads/productos/' + item.imagen} alt={item.nombre}/>
                                                                 <div className="media-body">
                                                                     <h6 className="mt-0">{item.nombre}</h6>
                                                                     <p>Cras sit amet nibh libero.</p>
@@ -164,4 +162,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default connect()(Home);
