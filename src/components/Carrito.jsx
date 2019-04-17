@@ -1,8 +1,12 @@
+/* diegoJD*/
 import React, {Component} from 'react'
-import uid from 'uid'
 import store from './../store'
+import { Link } from 'react-router-dom'
 import {removeFromCart} from './../actionCreators'
 import Header from './Header'
+import Footer from './Footer'
+import Navbar from './Navbar'
+import Cartproductlist from './Cartproductlist'
 import {connect} from 'react-redux'
 
 class Carrito extends Component {
@@ -28,39 +32,48 @@ class Carrito extends Component {
 		})
 	}
 
-	render(){
-		//console.log(this.state.items);
-		return(
-			<div>
-				<Header totalitems={this.state.items.length}></Header>
-				<div className="container">
-					<div className="row">
-						<div className="col-md-12">
-						    <table className="table">
-						    	<thead>
-						    		<tr>
-						    			<th>#</th>
-						    			<th>Descripción</th>
-						    			<th>Precio</th>
-						    		</tr>
-						    	</thead>
-						    	<tbody>
-						    		{
-						    			this.state.items.map(item =>
-								            <tr key={uid()}>
-								              	<td>{item.id}</td>
-								              	<td>{item.nombre}</td>
-								              	<td><button className="btn btn-danger" onClick={() => this.eliminarProducto(item.id)}><i className="fa fa-trash"></i></button></td>
-								            </tr>
-							        	)
-							        }
-						    	</tbody>
-						    </table>
+	render() {
+		if(this.props.productos > 0){
+			return(
+				<div>
+					<Header totalitems={this.state.items.length}></Header>
+					<Navbar></Navbar>
+					<section className="section-carrito pt-4 pb-4">
+						<div className="container">
+							<div className="row">
+								<div className="col-md-12">
+									<Cartproductlist productos={this.state.items} eliminarProducto={this.eliminarProducto}></Cartproductlist>
+								</div>
+							</div>
 						</div>
-					</div>
-			    </div>
-			</div>
-		)
+					</section>
+					<Footer></Footer>
+				</div>
+			)
+		}
+		else{
+			return(
+				<div>
+					<Header totalitems={this.state.items.length}></Header>
+					<Navbar></Navbar>
+					<section className="section-carrito pt-4 pb-4">
+						<div className="container">
+							<div className="row">
+								<div className="col-md-12">
+									<div className="alert alert-warning">
+										Carrito de compras vacío
+								</div>
+								</div>
+								<div className="col-md-12 text-right">
+									<Link to="/productos" className="btn btn-light">SEGUIR COMPRANDO</Link>
+								</div>
+							</div>
+						</div>
+					</section>
+					<Footer></Footer>
+				</div>
+			)
+		}
 	}
 	
 }

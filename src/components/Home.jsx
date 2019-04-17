@@ -3,12 +3,13 @@ import axios from 'axios';
 import Header from './Header'
 import Footer from './Footer'
 import Producto from './Producto'
+import Newsletter from './Newsletter'
 import Navbar from './Navbar'
 import { addToCart } from './../actionCreators'
 import Categorias from './Categorias';
 import uid from 'uid'
 import './../App.css'
-import imgSlider from './../img/slider-1.PNG'
+import imgSlider from './../img/slider-2.jpg'
 import store from '../store'
 import {connect} from 'react-redux'
 
@@ -88,26 +89,14 @@ class Home extends Component {
                 <header>
                     <Header totalitems={this.state.cartItems}></Header>
                 </header>
-                <div className="container">
-                    <Navbar></Navbar>
-                </div> 
+                <Navbar></Navbar>
                 <section className="section-home">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-3">
                                 <Categorias categories={this.state.categories}></Categorias>
                                 <br />
-                                <div className="card">
-                                    <div className="card-body">
-                                        <div className="form-group">
-                                            <label htmlFor="Email">Newsletter</label>
-                                            <input type="email" placeholder="Email" className="form-control" />
-                                        </div>
-                                        <div className="form-group">
-                                            <button className="btn btn-dark btn-block">Suscribirme</button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <Newsletter></Newsletter>
                             </div>
                             <div className="col-md-9">
                                 <div className="row">
@@ -147,7 +136,9 @@ class Home extends Component {
                                                 <div className="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
                                                     <Producto addcart={this.addCart} productos={this.state.products}></Producto>
                                                 </div>
-                                                <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">...</div>
+                                                <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                                    <Producto addcart={this.addCart} productos={this.state.products}></Producto>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

@@ -16,14 +16,12 @@ class Contacto extends Component {
                 <header>
                     <Header totalitems={this.state.cartItems}></Header>
                 </header>
-                <div className="container">
-                    <Navbar></Navbar>
-                </div>
-                <section className="section-contacto">
+                <Navbar></Navbar>
+                <section className="section-contacto pt-4 pb-4">
                     <div className="container">
                         <div className="row">
                             <div className="col-md-12">
-                                <h1 align="center" className="pt-4">Contacto</h1>
+                                <h2 align="center">Contacto</h2>
                                 <p align="center">¿Tienes una consulta o alguna sugerencia?</p>
                                 <div className="row">
                                     <div className="col-md-8">
